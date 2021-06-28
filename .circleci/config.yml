@@ -15,9 +15,9 @@ jobs:
       # Checkout the code as the first step.
       - checkout
       # Use mvn clean and package as the standard maven build phase
-      - run:
-          name: Chmod permissions #if permission fail, use this.
-          command: sudo chmod 666 /var/run/docker.sock
+      #- run:
+      #    name: Chmod permissions #if permission fail, use this.
+      #    command: sudo chmod 666 /var/run/docker.sock
       - run:
           name: Build
           command: mvn -B -DskipTests clean package docker:build
