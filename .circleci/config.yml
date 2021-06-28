@@ -29,26 +29,12 @@ jobs:
       - checkout
       - setup_remote_docker:
           docker_layer_caching: false
-      # Download and cache dependencies
-      - restore_cache:
-          keys:
-            - sample-springboot-api-{{ checksum "pom.xml" }}
-
-      - run: mvn dependency:go-offline
-
-      - save_cache:
-          paths:
-            - ~/.m2
-          key: sample-springboot-api-{{ checksum "pom.xml" }}
-
-      # package into a jar
-      - run: mvn clean package
       - run:
           name: Build Docker image
           command: |
             export TAG=0.2.<< pipeline.number >>
             export IMAGE_NAME=$CIRCLE_PROJECT_REPONAME
-            docker build -f /src/main/docker/Dockerfile -t $DOCKER_LOGIN/$IMAGE_NAME -t $DOCKER_LOGIN/$IMAGE_NAME:$TAG .
+            docker build -f target/docker/$DOCKER_LOGIN/devops/build/Dockerfile -t $DOCKER_LOGIN/$IMAGE_NAME -t $DOCKER_LOGIN/$IMAGE_NAME:$TAG .
             echo $DOCKER_PWD | docker login -u $DOCKER_LOGIN --password-stdin
             docker push $DOCKER_LOGIN/$IMAGE_NAME
   gke_create_cluster:
