@@ -1,4 +1,5 @@
 #DevOps Technical Assessment
+[![CircleCI](https://circleci.com/gh/LinuxEvangelist/devops/tree/development.svg?style=svg)](https://app.circleci.com/pipelines/github/LinuxEvangelist/devops?branch=development)
 
 **Get JWT User**
 ~~~~
