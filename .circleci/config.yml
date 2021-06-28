@@ -29,6 +29,20 @@ jobs:
       - checkout
       - setup_remote_docker:
           docker_layer_caching: false
+      # Download and cache dependencies
+      - restore_cache:
+          keys:
+            - sample-springboot-api-{{ checksum "pom.xml" }}
+
+      - run: mvn dependency:go-offline
+
+      - save_cache:
+          paths:
+            - ~/.m2
+          key: sample-springboot-api-{{ checksum "pom.xml" }}
+
+      # package into a jar
+      - run: mvn clean package
       - run:
           name: Build Docker image
           command: |
