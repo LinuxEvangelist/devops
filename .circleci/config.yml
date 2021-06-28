@@ -122,11 +122,11 @@ workflows:
             - run_tests
             - build_docker_image
             - gke_create_cluster
-            - approve-destroy:
-                type: approval
-                requires:
-                  - gke_create_cluster
-                  - gke_deploy_app
-            - gke_destroy_cluster:
-                requires:
-                  - approve-destroy
+      - approve-destroy:
+          type: approval
+          requires:
+            - gke_create_cluster
+            - gke_deploy_app
+      - gke_destroy_cluster:
+          requires:
+            - approve-destroy
