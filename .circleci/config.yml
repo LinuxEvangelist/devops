@@ -22,7 +22,6 @@ jobs:
       - run:
           name: Test
           command: mvn test
-
     build_docker_image:
       docker:
         - image: cimg/openjdk:11.0
