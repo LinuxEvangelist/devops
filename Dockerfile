@@ -1,7 +1,6 @@
 FROM linuxevangelist/devops:latest
 WORKDIR application
 
-FROM openjdk:11-jre-slim
 LABEL PROJECT_NAME=devops \
       PROJECT=com.rllontop:devops:jar:0.0.1-SNAPSHOT
 
