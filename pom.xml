@@ -23,7 +23,7 @@
 		<java.version>11</java.version>
 		<maven.compiler.source>${java.version}</maven.compiler.source>
 		<maven.compiler.target>${java.version}</maven.compiler.target>
-		<docker.image.prefix>gcr.io/copper-triumph-217516</docker.image.prefix>
+		<docker.image.prefix>linuxevangelist</docker.image.prefix>
 		<docker.image.name>${project.artifactId}</docker.image.name>
 	</properties>
 
