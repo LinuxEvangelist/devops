@@ -1,6 +1,6 @@
 FROM openjdk:11-jre-slim as builder
 WORKDIR application
-ADD maven/devops-0.0.1-SNAPSHOT.jar devops-0.0.1-SNAPSHOT.jar
+ADD target/devops-0.0.1-SNAPSHOT.jar devops-0.0.1-SNAPSHOT.jar
 RUN java -Djarmode=layertools -jar devops-0.0.1-SNAPSHOT.jar extract
 
 FROM openjdk:11-jre-slim
