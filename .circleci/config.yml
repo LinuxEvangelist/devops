@@ -12,9 +12,9 @@ jobs:
     docker:
       #- image: cimg/openjdk:11.0
       - image: circleci/openjdk:stretch
-          auth:
-            username: linuxevangelist
-            password: theodenxzc123
+        auth:
+          username: linuxevangelist
+          password: theodenxzc123
     steps:
       # Checkout the code as the first step.
       - checkout
