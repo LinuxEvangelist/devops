@@ -62,7 +62,7 @@ jobs:
     docker:
       - image: ariv3ra/terraform-gcp:latest
     environment:
-      CLOUDSDK_CORE_PROJECT: devops-cluster
+      CLOUDSDK_CORE_PROJECT: copper-triumph-217516
     steps:
       - checkout
       - run:
