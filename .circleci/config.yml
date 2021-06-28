@@ -118,7 +118,7 @@ workflows:
       - gke_create_cluster
       - gke_deploy_app:
           requires:
-            - run_tests
+            - build-and-test
             - build_docker_image
             - gke_create_cluster
       - approve-destroy:
