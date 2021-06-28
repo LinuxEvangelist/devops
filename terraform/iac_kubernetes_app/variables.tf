@@ -1,5 +1,5 @@
 variable "cluster" {
-  default = "devops-cluster"
+  default = "devops-cluster-development"
 }
 
 variable "app" {
