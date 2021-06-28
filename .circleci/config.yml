@@ -11,17 +11,14 @@ jobs:
     # A list of available CircleCI Docker Convenience Images are available here: https://circleci.com/developer/images/image/cimg/openjdk
     docker:
       #- image: cimg/openjdk:11.0
-      - image: circleci/openjdk:stretch
-        auth:
-          username: linuxevangelist
-          password: theodenxzc123
+      - image: cimg/openjdk:11.0
     steps:
       # Checkout the code as the first step.
       - checkout
       # Use mvn clean and package as the standard maven build phase
-      - run:
-          name: Chmod permissions #if permission fail, use this.
-          command: sudo chmod 666 /var/run/docker.sock
+      #- run:
+      #    name: Chmod permissions #if permission fail, use this.
+      #    command: sudo chmod 666 /var/run/docker.sock
       - run:
           name: Build
           command: mvn -B -DskipTests clean package docker:build
@@ -41,7 +38,7 @@ jobs:
           command: |
             export TAG=0.2.<< pipeline.number >>
             export IMAGE_NAME=$CIRCLE_PROJECT_REPONAME
-            docker build -f target/docker/linuxevangelist/devops/build/Dockerfile -t $DOCKER_LOGIN/$IMAGE_NAME -t $DOCKER_LOGIN/$IMAGE_NAME:$TAG .
+            docker build -t $DOCKER_LOGIN/$IMAGE_NAME -t $DOCKER_LOGIN/$IMAGE_NAME:$TAG .
             echo $DOCKER_PWD | docker login -u $DOCKER_LOGIN --password-stdin
             docker push $DOCKER_LOGIN/$IMAGE_NAME
   gke_create_cluster:
