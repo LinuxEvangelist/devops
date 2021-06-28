@@ -1,8 +1,4 @@
 FROM linuxevangelist/devops:latest
-WORKDIR application
-
-LABEL PROJECT_NAME=devops \
-      PROJECT=com.rllontop:devops:jar:0.0.1-SNAPSHOT
 
 EXPOSE 8080
 
